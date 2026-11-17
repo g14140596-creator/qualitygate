@@ -1,0 +1,47 @@
+Failed to find real location of C:\Python314\python.exe
+test_cancel_between_evaluation_and_commit_is_not_published (test_optimization.CheckpointTests.test_cancel_between_evaluation_and_commit_is_not_published) ... ok
+test_database_polling_is_bounded_when_throttled (test_optimization.CheckpointTests.test_database_polling_is_bounded_when_throttled) ... ok
+test_final_checkpoint_catches_cancel_during_throttle_window (test_optimization.CheckpointTests.test_final_checkpoint_catches_cancel_during_throttle_window) ... ok
+test_failed_start_never_opens_browser (test_optimization.LauncherTests.test_failed_start_never_opens_browser) ... ok
+test_health_rejects_other_services_or_stopped_worker (test_optimization.LauncherTests.test_health_rejects_other_services_or_stopped_worker) ... ok
+test_success_opens_browser_only_after_health (test_optimization.LauncherTests.test_success_opens_browser_only_after_health) ... ok
+test_cancellation_checkpoint (test_qualitygate.EngineTests.test_cancellation_checkpoint) ... ok
+test_compare_dates_and_invalid_counterpart (test_qualitygate.EngineTests.test_compare_dates_and_invalid_counterpart) ... ok
+test_counts_not_row_count_and_details_bounded (test_qualitygate.EngineTests.test_counts_not_row_count_and_details_bounded) ... ok
+test_email_syntax_only (test_qualitygate.EngineTests.test_email_syntax_only) ... ok
+test_enum_is_case_sensitive_after_trimming (test_qualitygate.EngineTests.test_enum_is_case_sensitive_after_trimming) ... ok
+test_numeric_comparison_all_operators (test_qualitygate.EngineTests.test_numeric_comparison_all_operators) ... ok
+test_numeric_decimal_boundaries_and_non_finite (test_qualitygate.EngineTests.test_numeric_decimal_boundaries_and_non_finite) ... ok
+test_reference_uses_frozen_values (test_qualitygate.EngineTests.test_reference_uses_frozen_values) ... ok
+test_required_whitespace (test_qualitygate.EngineTests.test_required_whitespace) ... ok
+test_rule_validation_rejects_invalid_inputs (test_qualitygate.EngineTests.test_rule_validation_rejects_invalid_inputs) ... ok
+test_skipped_not_in_denominator_and_null_when_all_skip (test_qualitygate.EngineTests.test_skipped_not_in_denominator_and_null_when_all_skip) ... ok
+test_strict_calendar_date (test_qualitygate.EngineTests.test_strict_calendar_date) ... ok
+test_unique_flags_all_duplicates_and_skips_empty (test_qualitygate.EngineTests.test_unique_flags_all_duplicates_and_skips_empty) ... ok
+test_warning_gate (test_qualitygate.EngineTests.test_warning_gate) ... ok
+test_foreign_origin_and_dns_rebinding_host_rejected (test_qualitygate.HttpTests.test_foreign_origin_and_dns_rebinding_host_rejected) ... ok
+test_health_and_static_csp (test_qualitygate.HttpTests.test_health_and_static_csp) ... ok
+test_http_full_upload_rules_submit_result_export (test_qualitygate.HttpTests.test_http_full_upload_rules_submit_result_export) ... ok
+test_invalid_json_content_type_and_unknown_path (test_qualitygate.HttpTests.test_invalid_json_content_type_and_unknown_path) ... ok
+test_negative_pagination_rejected (test_qualitygate.HttpTests.test_negative_pagination_rejected) ... ok
+test_concurrent_idempotent_submission (test_qualitygate.ServiceTests.test_concurrent_idempotent_submission) ... ok
+test_csv_export_formula_prefix_and_raw_json_value (test_qualitygate.ServiceTests.test_csv_export_formula_prefix_and_raw_json_value) ... ok
+test_demo_actual_dirty_and_clean_outcomes (test_qualitygate.ServiceTests.test_demo_actual_dirty_and_clean_outcomes) ... ok
+test_idempotency_same_request_and_conflict (test_qualitygate.ServiceTests.test_idempotency_same_request_and_conflict) ... ok
+test_missing_column_rejected_before_enqueue (test_qualitygate.ServiceTests.test_missing_column_rejected_before_enqueue) ... ok
+test_process_recovery_preserves_queued_and_marks_running (test_qualitygate.ServiceTests.test_process_recovery_preserves_queued_and_marks_running) ... ok
+test_queued_cancel_and_retry_uses_original_rules (test_qualitygate.ServiceTests.test_queued_cancel_and_retry_uses_original_rules) ... ok
+test_rule_optimistic_version_conflict (test_qualitygate.ServiceTests.test_rule_optimistic_version_conflict) ... ok
+test_running_cancel_does_not_publish_partial_results (test_qualitygate.ServiceTests.test_running_cancel_does_not_publish_partial_results) ... ok
+test_snapshot_survives_edit (test_qualitygate.ServiceTests.test_snapshot_survives_edit) ... ok
+test_unexpected_failure_is_atomic (test_qualitygate.ServiceTests.test_unexpected_failure_is_atomic) ... ok
+test_upload_bom_unicode_quotes_and_multiline (test_qualitygate.ServiceTests.test_upload_bom_unicode_quotes_and_multiline) ... ok
+test_upload_dedup_and_immutable_source (test_qualitygate.ServiceTests.test_upload_dedup_and_immutable_source) ... ok
+test_upload_invalid_shape_encoding_binary_empty (test_qualitygate.ServiceTests.test_upload_invalid_shape_encoding_binary_empty) ... ok
+test_upload_limits (test_qualitygate.ServiceTests.test_upload_limits) ... ok
+test_worker_results_pagination_filter_and_restart_persistence (test_qualitygate.ServiceTests.test_worker_results_pagination_filter_and_restart_persistence) ... ok
+
+----------------------------------------------------------------------
+Ran 41 tests in 2.148s
+
+OK

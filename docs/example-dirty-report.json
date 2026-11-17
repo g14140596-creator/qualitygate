@@ -1,0 +1,776 @@
+{
+  "job": {
+    "id": "7bfa33521a5842bfaeb6514ab5d02807",
+    "dataset_id": "fd8b72a8970c4821a388031c9cdbf7a3",
+    "ruleset_id": "69918d4e2fb149ef8375f7dd1fc37893",
+    "ruleset_name": "合成订单 · 基础质量规则",
+    "ruleset_version": 1,
+    "rules_hash": "ee2eb8e438eda5bd15d6d8f73ee5d2e33ccffdef234b21bcb18b8211072397da",
+    "state": "succeeded",
+    "progress": 100,
+    "cancel_requested": 0,
+    "created_at": "2026-11-17T14:41:36.523+00:00",
+    "started_at": "2026-11-17T14:41:36.535+00:00",
+    "finished_at": "2026-11-17T14:41:36.564+00:00",
+    "duration_ms": 21.73,
+    "error": null,
+    "parent_id": null,
+    "dataset_name": "synthetic_orders_dirty.csv",
+    "dataset_sha256": "f0ef362888c5a04b0dd2a63321ba5ab3a366f6bba3a772c6a7cc38cb1ccd95f2",
+    "row_count": 240,
+    "summary": {
+      "bad_rows": 56,
+      "error_count": 55,
+      "error_rows": 47,
+      "evaluated": 2068,
+      "failed": 66,
+      "gate": "blocked",
+      "passed": 2002,
+      "row_count": 240,
+      "rule_count": 9,
+      "score": 96.81,
+      "skipped": 92,
+      "stored_issues": 66,
+      "truncated": false,
+      "warning_count": 11
+    },
+    "rule_results": [
+      {
+        "column": "order_id",
+        "failed": 8,
+        "id": "R01",
+        "name": "订单号不能为空",
+        "passed": 232,
+        "severity": "error",
+        "skipped": 0,
+        "type": "required"
+      },
+      {
+        "column": "order_id",
+        "failed": 6,
+        "id": "R02",
+        "name": "订单号不能重复",
+        "passed": 226,
+        "severity": "error",
+        "skipped": 8,
+        "type": "unique"
+      },
+      {
+        "column": "customer_email",
+        "failed": 6,
+        "id": "R03",
+        "name": "客户邮箱不能为空",
+        "passed": 234,
+        "severity": "error",
+        "skipped": 0,
+        "type": "required"
+      },
+      {
+        "column": "customer_email",
+        "failed": 11,
+        "id": "R04",
+        "name": "邮箱基础格式",
+        "passed": 223,
+        "severity": "warning",
+        "skipped": 6,
+        "type": "email"
+      },
+      {
+        "column": "amount",
+        "failed": 9,
+        "id": "R05",
+        "name": "订单金额合理范围",
+        "passed": 231,
+        "severity": "error",
+        "skipped": 0,
+        "type": "numeric_range"
+      },
+      {
+        "column": "status",
+        "failed": 7,
+        "id": "R06",
+        "name": "订单状态允许值",
+        "passed": 233,
+        "severity": "error",
+        "skipped": 0,
+        "type": "enum"
+      },
+      {
+        "column": "created_at",
+        "failed": 6,
+        "id": "R07",
+        "name": "创建日期格式",
+        "passed": 234,
+        "severity": "error",
+        "skipped": 0,
+        "type": "date"
+      },
+      {
+        "column": "paid_at",
+        "failed": 9,
+        "id": "R08",
+        "name": "付款日期不早于创建日期",
+        "passed": 153,
+        "severity": "error",
+        "skipped": 78,
+        "type": "compare_fields"
+      },
+      {
+        "column": "country_code",
+        "failed": 4,
+        "id": "R09",
+        "name": "国家编码存在于参考表",
+        "passed": 236,
+        "severity": "error",
+        "skipped": 0,
+        "type": "reference"
+      }
+    ],
+    "rules": [
+      {
+        "column": "order_id",
+        "id": "R01",
+        "name": "订单号不能为空",
+        "params": {},
+        "severity": "error",
+        "type": "required"
+      },
+      {
+        "column": "order_id",
+        "id": "R02",
+        "name": "订单号不能重复",
+        "params": {},
+        "severity": "error",
+        "type": "unique"
+      },
+      {
+        "column": "customer_email",
+        "id": "R03",
+        "name": "客户邮箱不能为空",
+        "params": {},
+        "severity": "error",
+        "type": "required"
+      },
+      {
+        "column": "customer_email",
+        "id": "R04",
+        "name": "邮箱基础格式",
+        "params": {},
+        "severity": "warning",
+        "type": "email"
+      },
+      {
+        "column": "amount",
+        "id": "R05",
+        "name": "订单金额合理范围",
+        "params": {
+          "max": "100000",
+          "min": "0"
+        },
+        "severity": "error",
+        "type": "numeric_range"
+      },
+      {
+        "column": "status",
+        "id": "R06",
+        "name": "订单状态允许值",
+        "params": {
+          "values": [
+            "pending",
+            "paid",
+            "refunded"
+          ]
+        },
+        "severity": "error",
+        "type": "enum"
+      },
+      {
+        "column": "created_at",
+        "id": "R07",
+        "name": "创建日期格式",
+        "params": {},
+        "severity": "error",
+        "type": "date"
+      },
+      {
+        "column": "paid_at",
+        "id": "R08",
+        "name": "付款日期不早于创建日期",
+        "params": {
+          "mode": "date",
+          "op": "gte",
+          "other": "created_at"
+        },
+        "severity": "error",
+        "type": "compare_fields"
+      },
+      {
+        "column": "country_code",
+        "id": "R09",
+        "name": "国家编码存在于参考表",
+        "params": {
+          "column": "code",
+          "dataset_id": "da4c7bf500e8429e8524f0e4b47a9042"
+        },
+        "severity": "error",
+        "type": "reference"
+      }
+    ],
+    "references": {
+      "R09": {
+        "column": "code",
+        "dataset_id": "da4c7bf500e8429e8524f0e4b47a9042",
+        "sha256": "76a67a04d4893ed2dd654ea0f4710f4fb9e8c6a204140dfe4a0fc52004848e40",
+        "values": [
+          "CN",
+          "DE",
+          "US"
+        ]
+      }
+    },
+    "events": [
+      {
+        "created_at": "2026-11-17T14:41:36.523+00:00",
+        "message": "任务已入队；已冻结数据哈希、规则版本与参考数据快照"
+      },
+      {
+        "created_at": "2026-11-17T14:41:36.535+00:00",
+        "message": "工作线程已领取任务，开始规则评估"
+      },
+      {
+        "created_at": "2026-11-17T14:41:36.564+00:00",
+        "message": "评估完成：66 条规则命中，56 个问题行；结果原子提交"
+      }
+    ]
+  },
+  "issues": [
+    {
+      "row_number": 2,
+      "rule_id": "R01",
+      "column": "order_id",
+      "severity": "error",
+      "value": "",
+      "message": "必填值为空"
+    },
+    {
+      "row_number": 3,
+      "rule_id": "R02",
+      "column": "order_id",
+      "severity": "error",
+      "value": "ORD-00002",
+      "message": "重复值，共出现 6 次（标记全部重复行）"
+    },
+    {
+      "row_number": 7,
+      "rule_id": "R02",
+      "column": "order_id",
+      "severity": "error",
+      "value": "ORD-00002",
+      "message": "重复值，共出现 6 次（标记全部重复行）"
+    },
+    {
+      "row_number": 9,
+      "rule_id": "R04",
+      "column": "customer_email",
+      "severity": "warning",
+      "value": "invalid-email",
+      "message": "不符合基础邮箱格式（不验证邮箱是否存在）"
+    },
+    {
+      "row_number": 12,
+      "rule_id": "R03",
+      "column": "customer_email",
+      "severity": "error",
+      "value": "",
+      "message": "必填值为空"
+    },
+    {
+      "row_number": 15,
+      "rule_id": "R05",
+      "column": "amount",
+      "severity": "error",
+      "value": "-9.99",
+      "message": "小于最小值 0"
+    },
+    {
+      "row_number": 19,
+      "rule_id": "R06",
+      "column": "status",
+      "severity": "error",
+      "value": "unknown",
+      "message": "不在允许值集合中"
+    },
+    {
+      "row_number": 21,
+      "rule_id": "R07",
+      "column": "created_at",
+      "severity": "error",
+      "value": "2026-02-30",
+      "message": "day 30 must be in range 1..28 for month 2 in year 2026"
+    },
+    {
+      "row_number": 21,
+      "rule_id": "R08",
+      "column": "paid_at",
+      "severity": "error",
+      "value": "2026-10-20",
+      "message": "day 30 must be in range 1..28 for month 2 in year 2026"
+    },
+    {
+      "row_number": 24,
+      "rule_id": "R08",
+      "column": "paid_at",
+      "severity": "error",
+      "value": "2025-01-01",
+      "message": "与 created_at 的 gte 比较未通过"
+    },
+    {
+      "row_number": 27,
+      "rule_id": "R09",
+      "column": "country_code",
+      "severity": "error",
+      "value": "XX",
+      "message": "参考数据集中不存在此值"
+    },
+    {
+      "row_number": 32,
+      "rule_id": "R04",
+      "column": "customer_email",
+      "severity": "warning",
+      "value": "invalid-email",
+      "message": "不符合基础邮箱格式（不验证邮箱是否存在）"
+    },
+    {
+      "row_number": 33,
+      "rule_id": "R01",
+      "column": "order_id",
+      "severity": "error",
+      "value": "",
+      "message": "必填值为空"
+    },
+    {
+      "row_number": 44,
+      "rule_id": "R05",
+      "column": "amount",
+      "severity": "error",
+      "value": "-9.99",
+      "message": "小于最小值 0"
+    },
+    {
+      "row_number": 53,
+      "rule_id": "R03",
+      "column": "customer_email",
+      "severity": "error",
+      "value": "",
+      "message": "必填值为空"
+    },
+    {
+      "row_number": 54,
+      "rule_id": "R02",
+      "column": "order_id",
+      "severity": "error",
+      "value": "ORD-00002",
+      "message": "重复值，共出现 6 次（标记全部重复行）"
+    },
+    {
+      "row_number": 55,
+      "rule_id": "R04",
+      "column": "customer_email",
+      "severity": "warning",
+      "value": "invalid-email",
+      "message": "不符合基础邮箱格式（不验证邮箱是否存在）"
+    },
+    {
+      "row_number": 56,
+      "rule_id": "R06",
+      "column": "status",
+      "severity": "error",
+      "value": "unknown",
+      "message": "不在允许值集合中"
+    },
+    {
+      "row_number": 57,
+      "rule_id": "R05",
+      "column": "amount",
+      "severity": "error",
+      "value": "NaN",
+      "message": "数字必须为有限值"
+    },
+    {
+      "row_number": 64,
+      "rule_id": "R01",
+      "column": "order_id",
+      "severity": "error",
+      "value": "",
+      "message": "必填值为空"
+    },
+    {
+      "row_number": 64,
+      "rule_id": "R07",
+      "column": "created_at",
+      "severity": "error",
+      "value": "2026-02-30",
+      "message": "day 30 must be in range 1..28 for month 2 in year 2026"
+    },
+    {
+      "row_number": 64,
+      "rule_id": "R08",
+      "column": "paid_at",
+      "severity": "error",
+      "value": "2026-10-07",
+      "message": "day 30 must be in range 1..28 for month 2 in year 2026"
+    },
+    {
+      "row_number": 73,
+      "rule_id": "R05",
+      "column": "amount",
+      "severity": "error",
+      "value": "-9.99",
+      "message": "小于最小值 0"
+    },
+    {
+      "row_number": 77,
+      "rule_id": "R08",
+      "column": "paid_at",
+      "severity": "error",
+      "value": "2025-01-01",
+      "message": "与 created_at 的 gte 比较未通过"
+    },
+    {
+      "row_number": 78,
+      "rule_id": "R04",
+      "column": "customer_email",
+      "severity": "warning",
+      "value": "invalid-email",
+      "message": "不符合基础邮箱格式（不验证邮箱是否存在）"
+    },
+    {
+      "row_number": 86,
+      "rule_id": "R09",
+      "column": "country_code",
+      "severity": "error",
+      "value": "XX",
+      "message": "参考数据集中不存在此值"
+    },
+    {
+      "row_number": 93,
+      "rule_id": "R06",
+      "column": "status",
+      "severity": "error",
+      "value": "unknown",
+      "message": "不在允许值集合中"
+    },
+    {
+      "row_number": 94,
+      "rule_id": "R03",
+      "column": "customer_email",
+      "severity": "error",
+      "value": "",
+      "message": "必填值为空"
+    },
+    {
+      "row_number": 95,
+      "rule_id": "R01",
+      "column": "order_id",
+      "severity": "error",
+      "value": "",
+      "message": "必填值为空"
+    },
+    {
+      "row_number": 101,
+      "rule_id": "R02",
+      "column": "order_id",
+      "severity": "error",
+      "value": "ORD-00002",
+      "message": "重复值，共出现 6 次（标记全部重复行）"
+    },
+    {
+      "row_number": 101,
+      "rule_id": "R04",
+      "column": "customer_email",
+      "severity": "warning",
+      "value": "invalid-email",
+      "message": "不符合基础邮箱格式（不验证邮箱是否存在）"
+    },
+    {
+      "row_number": 102,
+      "rule_id": "R05",
+      "column": "amount",
+      "severity": "error",
+      "value": "-9.99",
+      "message": "小于最小值 0"
+    },
+    {
+      "row_number": 107,
+      "rule_id": "R07",
+      "column": "created_at",
+      "severity": "error",
+      "value": "2026-02-30",
+      "message": "day 30 must be in range 1..28 for month 2 in year 2026"
+    },
+    {
+      "row_number": 124,
+      "rule_id": "R04",
+      "column": "customer_email",
+      "severity": "warning",
+      "value": "invalid-email",
+      "message": "不符合基础邮箱格式（不验证邮箱是否存在）"
+    },
+    {
+      "row_number": 126,
+      "rule_id": "R01",
+      "column": "order_id",
+      "severity": "error",
+      "value": "",
+      "message": "必填值为空"
+    },
+    {
+      "row_number": 130,
+      "rule_id": "R06",
+      "column": "status",
+      "severity": "error",
+      "value": "unknown",
+      "message": "不在允许值集合中"
+    },
+    {
+      "row_number": 130,
+      "rule_id": "R08",
+      "column": "paid_at",
+      "severity": "error",
+      "value": "2025-01-01",
+      "message": "与 created_at 的 gte 比较未通过"
+    },
+    {
+      "row_number": 131,
+      "rule_id": "R05",
+      "column": "amount",
+      "severity": "error",
+      "value": "-9.99",
+      "message": "小于最小值 0"
+    },
+    {
+      "row_number": 135,
+      "rule_id": "R03",
+      "column": "customer_email",
+      "severity": "error",
+      "value": "",
+      "message": "必填值为空"
+    },
+    {
+      "row_number": 145,
+      "rule_id": "R09",
+      "column": "country_code",
+      "severity": "error",
+      "value": "XX",
+      "message": "参考数据集中不存在此值"
+    },
+    {
+      "row_number": 147,
+      "rule_id": "R04",
+      "column": "customer_email",
+      "severity": "warning",
+      "value": "invalid-email",
+      "message": "不符合基础邮箱格式（不验证邮箱是否存在）"
+    },
+    {
+      "row_number": 148,
+      "rule_id": "R02",
+      "column": "order_id",
+      "severity": "error",
+      "value": "ORD-00002",
+      "message": "重复值，共出现 6 次（标记全部重复行）"
+    },
+    {
+      "row_number": 150,
+      "rule_id": "R07",
+      "column": "created_at",
+      "severity": "error",
+      "value": "2026-02-30",
+      "message": "day 30 must be in range 1..28 for month 2 in year 2026"
+    },
+    {
+      "row_number": 150,
+      "rule_id": "R08",
+      "column": "paid_at",
+      "severity": "error",
+      "value": "2026-10-09",
+      "message": "day 30 must be in range 1..28 for month 2 in year 2026"
+    },
+    {
+      "row_number": 157,
+      "rule_id": "R01",
+      "column": "order_id",
+      "severity": "error",
+      "value": "",
+      "message": "必填值为空"
+    },
+    {
+      "row_number": 160,
+      "rule_id": "R05",
+      "column": "amount",
+      "severity": "error",
+      "value": "-9.99",
+      "message": "小于最小值 0"
+    },
+    {
+      "row_number": 167,
+      "rule_id": "R06",
+      "column": "status",
+      "severity": "error",
+      "value": "unknown",
+      "message": "不在允许值集合中"
+    },
+    {
+      "row_number": 170,
+      "rule_id": "R04",
+      "column": "customer_email",
+      "severity": "warning",
+      "value": "invalid-email",
+      "message": "不符合基础邮箱格式（不验证邮箱是否存在）"
+    },
+    {
+      "row_number": 176,
+      "rule_id": "R03",
+      "column": "customer_email",
+      "severity": "error",
+      "value": "",
+      "message": "必填值为空"
+    },
+    {
+      "row_number": 183,
+      "rule_id": "R08",
+      "column": "paid_at",
+      "severity": "error",
+      "value": "2025-01-01",
+      "message": "与 created_at 的 gte 比较未通过"
+    },
+    {
+      "row_number": 188,
+      "rule_id": "R01",
+      "column": "order_id",
+      "severity": "error",
+      "value": "",
+      "message": "必填值为空"
+    },
+    {
+      "row_number": 189,
+      "rule_id": "R05",
+      "column": "amount",
+      "severity": "error",
+      "value": "-9.99",
+      "message": "小于最小值 0"
+    },
+    {
+      "row_number": 193,
+      "rule_id": "R04",
+      "column": "customer_email",
+      "severity": "warning",
+      "value": "invalid-email",
+      "message": "不符合基础邮箱格式（不验证邮箱是否存在）"
+    },
+    {
+      "row_number": 193,
+      "rule_id": "R07",
+      "column": "created_at",
+      "severity": "error",
+      "value": "2026-02-30",
+      "message": "day 30 must be in range 1..28 for month 2 in year 2026"
+    },
+    {
+      "row_number": 193,
+      "rule_id": "R08",
+      "column": "paid_at",
+      "severity": "error",
+      "value": "2026-10-24",
+      "message": "day 30 must be in range 1..28 for month 2 in year 2026"
+    },
+    {
+      "row_number": 195,
+      "rule_id": "R02",
+      "column": "order_id",
+      "severity": "error",
+      "value": "ORD-00002",
+      "message": "重复值，共出现 6 次（标记全部重复行）"
+    },
+    {
+      "row_number": 204,
+      "rule_id": "R06",
+      "column": "status",
+      "severity": "error",
+      "value": "unknown",
+      "message": "不在允许值集合中"
+    },
+    {
+      "row_number": 204,
+      "rule_id": "R09",
+      "column": "country_code",
+      "severity": "error",
+      "value": "XX",
+      "message": "参考数据集中不存在此值"
+    },
+    {
+      "row_number": 216,
+      "rule_id": "R04",
+      "column": "customer_email",
+      "severity": "warning",
+      "value": "invalid-email",
+      "message": "不符合基础邮箱格式（不验证邮箱是否存在）"
+    },
+    {
+      "row_number": 217,
+      "rule_id": "R03",
+      "column": "customer_email",
+      "severity": "error",
+      "value": "",
+      "message": "必填值为空"
+    },
+    {
+      "row_number": 218,
+      "rule_id": "R05",
+      "column": "amount",
+      "severity": "error",
+      "value": "-9.99",
+      "message": "小于最小值 0"
+    },
+    {
+      "row_number": 219,
+      "rule_id": "R01",
+      "column": "order_id",
+      "severity": "error",
+      "value": "",
+      "message": "必填值为空"
+    },
+    {
+      "row_number": 236,
+      "rule_id": "R07",
+      "column": "created_at",
+      "severity": "error",
+      "value": "2026-02-30",
+      "message": "day 30 must be in range 1..28 for month 2 in year 2026"
+    },
+    {
+      "row_number": 236,
+      "rule_id": "R08",
+      "column": "paid_at",
+      "severity": "error",
+      "value": "2025-01-01",
+      "message": "day 30 must be in range 1..28 for month 2 in year 2026"
+    },
+    {
+      "row_number": 239,
+      "rule_id": "R04",
+      "column": "customer_email",
+      "severity": "warning",
+      "value": "invalid-email",
+      "message": "不符合基础邮箱格式（不验证邮箱是否存在）"
+    },
+    {
+      "row_number": 241,
+      "rule_id": "R06",
+      "column": "status",
+      "severity": "error",
+      "value": "unknown",
+      "message": "不在允许值集合中"
+    }
+  ]
+}

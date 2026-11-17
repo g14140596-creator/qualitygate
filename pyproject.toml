@@ -1,0 +1,23 @@
+[project]
+name = "qualitygate-local"
+version = "1.0.0"
+description = "A local, reproducible CSV quality inspection workbench"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+qualitygate = "qualitygate.__main__:main"
+qualitygate-desktop = "qualitygate.launcher:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["qualitygate*"]
+
+[tool.setuptools.package-data]
+qualitygate = ["static/*.html", "static/*.js", "static/*.css"]
+
+[tool.qualitygate]
+test-command = "python -m unittest discover -s tests -v"

@@ -1,0 +1,91 @@
+{
+  "generated_at": "2026-11-17T14:41:51.967062+00:00",
+  "python": "3.14.6",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "synthetic": true,
+  "rows": 20000,
+  "rules": 9,
+  "checks_evaluated": 173333,
+  "checks_skipped": 6667,
+  "upload_bytes": 1442333,
+  "upload_ms": 177.61,
+  "engine_only_ms_3_runs": [
+    85.79,
+    85.32,
+    84.92
+  ],
+  "worker_end_to_end_ms": 141.68,
+  "worker_summary": {
+    "bad_rows": 0,
+    "error_count": 0,
+    "error_rows": 0,
+    "evaluated": 173333,
+    "failed": 0,
+    "gate": "passed",
+    "passed": 173333,
+    "row_count": 20000,
+    "rule_count": 9,
+    "score": 100.0,
+    "skipped": 6667,
+    "stored_issues": 0,
+    "truncated": false,
+    "warning_count": 0
+  },
+  "demo": {
+    "dirty": {
+      "summary": {
+        "bad_rows": 56,
+        "error_count": 55,
+        "error_rows": 47,
+        "evaluated": 2068,
+        "failed": 66,
+        "gate": "blocked",
+        "passed": 2002,
+        "row_count": 240,
+        "rule_count": 9,
+        "score": 96.81,
+        "skipped": 92,
+        "stored_issues": 66,
+        "truncated": false,
+        "warning_count": 11
+      },
+      "duration_ms": 21.73
+    },
+    "clean": {
+      "summary": {
+        "bad_rows": 0,
+        "error_count": 0,
+        "error_rows": 0,
+        "evaluated": 2080,
+        "failed": 0,
+        "gate": "passed",
+        "passed": 2080,
+        "row_count": 240,
+        "rule_count": 9,
+        "score": 100.0,
+        "skipped": 80,
+        "stored_issues": 0,
+        "truncated": false,
+        "warning_count": 0
+      },
+      "duration_ms": 22.36
+    }
+  },
+  "limitations": "Local single-process synthetic workload. Not a production, concurrent-user, or cross-machine benchmark.",
+  "checkpoint_ab": {
+    "unthrottled_ms": [
+      4450.82,
+      4623.26,
+      4696.63
+    ],
+    "throttled_ms": [
+      144.57,
+      156.7,
+      143.95
+    ],
+    "unthrottled_median_ms": 4623.26,
+    "throttled_median_ms": 144.57,
+    "median_duration_reduction_pct": 96.87
+  },
+  "test_count": 41
+}

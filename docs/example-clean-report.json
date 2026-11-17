@@ -1,0 +1,247 @@
+{
+  "job": {
+    "id": "803e1327f8844524815f718907274c12",
+    "dataset_id": "60b9b54d39e343c8aa6d303ebbb46146",
+    "ruleset_id": "69918d4e2fb149ef8375f7dd1fc37893",
+    "ruleset_name": "合成订单 · 基础质量规则",
+    "ruleset_version": 1,
+    "rules_hash": "ee2eb8e438eda5bd15d6d8f73ee5d2e33ccffdef234b21bcb18b8211072397da",
+    "state": "succeeded",
+    "progress": 100,
+    "cancel_requested": 0,
+    "created_at": "2026-11-17T14:41:36.590+00:00",
+    "started_at": "2026-11-17T14:41:36.600+00:00",
+    "finished_at": "2026-11-17T14:41:36.631+00:00",
+    "duration_ms": 22.36,
+    "error": null,
+    "parent_id": null,
+    "dataset_name": "synthetic_orders_clean.csv",
+    "dataset_sha256": "bb78b1cdc5c0bfc543e6e2e58e044cc8aab4a2dc5a845f4b43086574d0e2258f",
+    "row_count": 240,
+    "summary": {
+      "bad_rows": 0,
+      "error_count": 0,
+      "error_rows": 0,
+      "evaluated": 2080,
+      "failed": 0,
+      "gate": "passed",
+      "passed": 2080,
+      "row_count": 240,
+      "rule_count": 9,
+      "score": 100.0,
+      "skipped": 80,
+      "stored_issues": 0,
+      "truncated": false,
+      "warning_count": 0
+    },
+    "rule_results": [
+      {
+        "column": "order_id",
+        "failed": 0,
+        "id": "R01",
+        "name": "订单号不能为空",
+        "passed": 240,
+        "severity": "error",
+        "skipped": 0,
+        "type": "required"
+      },
+      {
+        "column": "order_id",
+        "failed": 0,
+        "id": "R02",
+        "name": "订单号不能重复",
+        "passed": 240,
+        "severity": "error",
+        "skipped": 0,
+        "type": "unique"
+      },
+      {
+        "column": "customer_email",
+        "failed": 0,
+        "id": "R03",
+        "name": "客户邮箱不能为空",
+        "passed": 240,
+        "severity": "error",
+        "skipped": 0,
+        "type": "required"
+      },
+      {
+        "column": "customer_email",
+        "failed": 0,
+        "id": "R04",
+        "name": "邮箱基础格式",
+        "passed": 240,
+        "severity": "warning",
+        "skipped": 0,
+        "type": "email"
+      },
+      {
+        "column": "amount",
+        "failed": 0,
+        "id": "R05",
+        "name": "订单金额合理范围",
+        "passed": 240,
+        "severity": "error",
+        "skipped": 0,
+        "type": "numeric_range"
+      },
+      {
+        "column": "status",
+        "failed": 0,
+        "id": "R06",
+        "name": "订单状态允许值",
+        "passed": 240,
+        "severity": "error",
+        "skipped": 0,
+        "type": "enum"
+      },
+      {
+        "column": "created_at",
+        "failed": 0,
+        "id": "R07",
+        "name": "创建日期格式",
+        "passed": 240,
+        "severity": "error",
+        "skipped": 0,
+        "type": "date"
+      },
+      {
+        "column": "paid_at",
+        "failed": 0,
+        "id": "R08",
+        "name": "付款日期不早于创建日期",
+        "passed": 160,
+        "severity": "error",
+        "skipped": 80,
+        "type": "compare_fields"
+      },
+      {
+        "column": "country_code",
+        "failed": 0,
+        "id": "R09",
+        "name": "国家编码存在于参考表",
+        "passed": 240,
+        "severity": "error",
+        "skipped": 0,
+        "type": "reference"
+      }
+    ],
+    "rules": [
+      {
+        "column": "order_id",
+        "id": "R01",
+        "name": "订单号不能为空",
+        "params": {},
+        "severity": "error",
+        "type": "required"
+      },
+      {
+        "column": "order_id",
+        "id": "R02",
+        "name": "订单号不能重复",
+        "params": {},
+        "severity": "error",
+        "type": "unique"
+      },
+      {
+        "column": "customer_email",
+        "id": "R03",
+        "name": "客户邮箱不能为空",
+        "params": {},
+        "severity": "error",
+        "type": "required"
+      },
+      {
+        "column": "customer_email",
+        "id": "R04",
+        "name": "邮箱基础格式",
+        "params": {},
+        "severity": "warning",
+        "type": "email"
+      },
+      {
+        "column": "amount",
+        "id": "R05",
+        "name": "订单金额合理范围",
+        "params": {
+          "max": "100000",
+          "min": "0"
+        },
+        "severity": "error",
+        "type": "numeric_range"
+      },
+      {
+        "column": "status",
+        "id": "R06",
+        "name": "订单状态允许值",
+        "params": {
+          "values": [
+            "pending",
+            "paid",
+            "refunded"
+          ]
+        },
+        "severity": "error",
+        "type": "enum"
+      },
+      {
+        "column": "created_at",
+        "id": "R07",
+        "name": "创建日期格式",
+        "params": {},
+        "severity": "error",
+        "type": "date"
+      },
+      {
+        "column": "paid_at",
+        "id": "R08",
+        "name": "付款日期不早于创建日期",
+        "params": {
+          "mode": "date",
+          "op": "gte",
+          "other": "created_at"
+        },
+        "severity": "error",
+        "type": "compare_fields"
+      },
+      {
+        "column": "country_code",
+        "id": "R09",
+        "name": "国家编码存在于参考表",
+        "params": {
+          "column": "code",
+          "dataset_id": "da4c7bf500e8429e8524f0e4b47a9042"
+        },
+        "severity": "error",
+        "type": "reference"
+      }
+    ],
+    "references": {
+      "R09": {
+        "column": "code",
+        "dataset_id": "da4c7bf500e8429e8524f0e4b47a9042",
+        "sha256": "76a67a04d4893ed2dd654ea0f4710f4fb9e8c6a204140dfe4a0fc52004848e40",
+        "values": [
+          "CN",
+          "DE",
+          "US"
+        ]
+      }
+    },
+    "events": [
+      {
+        "created_at": "2026-11-17T14:41:36.590+00:00",
+        "message": "任务已入队；已冻结数据哈希、规则版本与参考数据快照"
+      },
+      {
+        "created_at": "2026-11-17T14:41:36.600+00:00",
+        "message": "工作线程已领取任务，开始规则评估"
+      },
+      {
+        "created_at": "2026-11-17T14:41:36.631+00:00",
+        "message": "评估完成：0 条规则命中，0 个问题行；结果原子提交"
+      }
+    ]
+  },
+  "issues": []
+}

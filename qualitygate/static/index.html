@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>QualityGate · 数据质量工作台</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<aside class="sidebar">
+ <a class="brand" href="#overview"><span class="brand-mark">Q</span><span>QualityGate<small>数据质量工作台</small></span></a>
+ <div class="workspace"><span class="workspace-icon">IH</span><div>Ivy's workspace<small>LOCAL EDITION</small></div><span class="live-dot"></span></div>
+ <div class="nav-label">工作空间</div>
+ <nav aria-label="主导航">
+  <a href="#overview" data-nav="overview"><span>◫</span>巡检概览</a>
+  <a href="#datasets" data-nav="datasets"><span>▤</span>数据资产</a>
+  <a href="#rules" data-nav="rules"><span>☷</span>规则中心</a>
+  <a href="#guide" data-nav="guide"><span>◎</span>使用指南</a>
+ </nav>
+ <div class="sidebar-bottom"><div class="local-note"><span class="live-dot"></span>本地运行 · 数据留在本机</div><p>从发现问题，到可追溯的结果。<br>让每次数据交付更有把握。</p><span class="version">QUALITYGATE / v1.0</span></div>
+</aside>
+<div class="shell">
+ <header class="topbar"><div><span class="breadcrumb">工作空间</span><span class="slash">/</span><span id="breadcrumb">巡检概览</span></div><div class="topbar-right"><span class="connection" id="connection">连接中</span><span class="avatar">盈</span></div></header>
+ <main id="main" tabindex="-1" aria-live="polite"></main>
+ <footer>QualityGate · 个人工程项目 <span>演示数据为合成数据，不代表真实业务</span></footer>
+</div>
+<dialog id="run-dialog" aria-labelledby="run-title"><form id="run-form"><div class="dialog-head"><div><span class="eyebrow">NEW INSPECTION</span><h2 id="run-title">发起一次质量巡检</h2></div><button type="button" class="icon-button close-dialog" aria-label="关闭">×</button></div><p class="muted">选择数据与规则。提交时会冻结规则版本，之后的修改不会影响本次结果。</p><label>待检数据集<select id="run-dataset" required></select></label><label>使用规则集<select id="run-ruleset" required></select></label><div class="hint">任务会在后台执行，关闭页面后也会继续处理。服务器需保持运行。</div><div class="dialog-actions"><button type="button" class="button secondary close-dialog">取消</button><button class="button primary" type="submit">开始巡检 →</button></div></form></dialog>
+<dialog id="upload-dialog" aria-labelledby="upload-title"><form id="upload-form"><div class="dialog-head"><div><span class="eyebrow">IMPORT DATASET</span><h2 id="upload-title">导入 CSV 数据</h2></div><button type="button" class="icon-button close-dialog" aria-label="关闭">×</button></div><p class="muted">支持 UTF-8 编码、带表头的 CSV；最大 4 MiB、20,000 行、80 列。</p><label class="dropzone" id="dropzone"><span class="upload-icon">↑</span><strong id="file-label">点击选择，或将 CSV 拖到这里</strong><span>原始数据只用于核查，不会被自动修改</span><input type="file" id="csv-file" accept=".csv,text/csv" required></label><div class="dialog-actions"><button type="button" class="button secondary close-dialog">取消</button><button class="button primary" type="submit">导入数据</button></div></form></dialog>
+<dialog id="rules-dialog" class="wide-dialog" aria-labelledby="rules-title"><form id="rules-form"><div class="dialog-head"><div><span class="eyebrow">QUALITY RULES</span><h2 id="rules-title">新建规则集</h2></div><button type="button" class="icon-button close-dialog" aria-label="关闭">×</button></div><label>规则集名称<input id="rules-name" required maxlength="80" placeholder="例如：订单数据入库检查"></label><div id="rule-editor"></div><button type="button" class="button secondary" id="add-rule">＋ 添加规则</button><div class="dialog-actions"><span class="muted">已执行任务保留原规则快照</span><button class="button primary" type="submit">保存规则集</button></div></form></dialog>
+<dialog id="preview-dialog" class="wide-dialog" aria-labelledby="preview-title"><div class="dialog-head"><h2 id="preview-title">数据预览</h2><button type="button" class="icon-button close-dialog" aria-label="关闭">×</button></div><div id="preview-content"></div></dialog>
+<div id="toast" role="alert" hidden></div>
+</body></html>
